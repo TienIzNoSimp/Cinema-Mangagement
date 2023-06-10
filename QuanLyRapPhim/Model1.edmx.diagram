@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d6ed9c924ec84d318238f9d376b50444" Name="Diagram1">
+        <EntityTypeShape EntityType="QLRapPhimModel.tblAuditorium" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLRapPhimModel.tblCenter" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLRapPhimModel.tblGenre" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLRapPhimModel.tblScreening" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLRapPhimModel.tblStudio" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLRapPhimModel.tblUser" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLRapPhimModel.tblSchedule" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="QLRapPhimModel.fk_ref_auditorium_id" ManuallyRouted="false" />
+        <AssociationConnector Association="QLRapPhimModel.fk_ref_center_id" ManuallyRouted="false" />
+        <AssociationConnector Association="QLRapPhimModel.fk_ref_genre_id" ManuallyRouted="false" />
+        <AssociationConnector Association="QLRapPhimModel.fk_ref_screening_name" ManuallyRouted="false" />
+        <AssociationConnector Association="QLRapPhimModel.fk_ref_studio_id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

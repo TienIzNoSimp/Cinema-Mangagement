@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLRapPhimModelStoreContainer" CdmEntityContainer="QLRapPhimEntities">
+    <EntitySetMapping Name="tblAuditoriums">
+      <EntityTypeMapping TypeName="QLRapPhimModel.tblAuditorium">
+        <MappingFragment StoreEntitySet="tblAuditorium">
+          <ScalarProperty Name="auditorium_id" ColumnName="auditorium_id" />
+          <ScalarProperty Name="center_id" ColumnName="center_id" />
+          <ScalarProperty Name="seat_count" ColumnName="seat_count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCenters">
+      <EntityTypeMapping TypeName="QLRapPhimModel.tblCenter">
+        <MappingFragment StoreEntitySet="tblCenter">
+          <ScalarProperty Name="center_id" ColumnName="center_id" />
+          <ScalarProperty Name="center_name" ColumnName="center_name" />
+          <ScalarProperty Name="center_address" ColumnName="center_address" />
+          <ScalarProperty Name="center_contact" ColumnName="center_contact" />
+          <ScalarProperty Name="center_auditorium_count" ColumnName="center_auditorium_count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblGenres">
+      <EntityTypeMapping TypeName="QLRapPhimModel.tblGenre">
+        <MappingFragment StoreEntitySet="tblGenre">
+          <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+          <ScalarProperty Name="genre_name" ColumnName="genre_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblScreenings">
+      <EntityTypeMapping TypeName="QLRapPhimModel.tblScreening">
+        <MappingFragment StoreEntitySet="tblScreening">
+          <ScalarProperty Name="screening_name" ColumnName="screening_name" />
+          <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+          <ScalarProperty Name="studio_id" ColumnName="studio_id" />
+          <ScalarProperty Name="screening_start" ColumnName="screening_start" />
+          <ScalarProperty Name="screening_end" ColumnName="screening_end" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStudios">
+      <EntityTypeMapping TypeName="QLRapPhimModel.tblStudio">
+        <MappingFragment StoreEntitySet="tblStudio">
+          <ScalarProperty Name="studio_id" ColumnName="studio_id" />
+          <ScalarProperty Name="studio_name" ColumnName="studio_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="QLRapPhimModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSchedules">
+      <EntityTypeMapping TypeName="QLRapPhimModel.tblSchedule">
+        <MappingFragment StoreEntitySet="tblSchedule">
+          <ScalarProperty Name="auditorium_id" ColumnName="auditorium_id" />
+          <ScalarProperty Name="screening_name" ColumnName="screening_name" />
+          <ScalarProperty Name="time" ColumnName="time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
