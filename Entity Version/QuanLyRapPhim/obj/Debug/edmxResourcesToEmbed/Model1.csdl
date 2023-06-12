@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLRapPhimModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblAuditorium">
+    <Key>
+      <PropertyRef Name="auditorium_id" />
+    </Key>
+    <Property Name="auditorium_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="center_id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="seat_count" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="tblSchedules" Relationship="Self.fk_ref_auditorium_id" FromRole="tblAuditorium" ToRole="tblSchedule" />
+    <NavigationProperty Name="tblCenter" Relationship="Self.fk_ref_center_id" FromRole="tblAuditorium" ToRole="tblCenter" />
+  </EntityType>
+  <EntityType Name="tblCenter">
+    <Key>
+      <PropertyRef Name="center_id" />
+    </Key>
+    <Property Name="center_id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="center_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="center_address" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="center_contact" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="center_auditorium_count" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="tblAuditoriums" Relationship="Self.fk_ref_center_id" FromRole="tblCenter" ToRole="tblAuditorium" />
+  </EntityType>
+  <EntityType Name="tblGenre">
+    <Key>
+      <PropertyRef Name="genre_id" />
+    </Key>
+    <Property Name="genre_id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="genre_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblScreenings" Relationship="Self.fk_ref_genre_id" FromRole="tblGenre" ToRole="tblScreening" />
+  </EntityType>
+  <EntityType Name="tblScreening">
+    <Key>
+      <PropertyRef Name="screening_name" />
+    </Key>
+    <Property Name="screening_name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="genre_id" Type="Byte" Nullable="false" />
+    <Property Name="studio_id" Type="Int16" Nullable="false" />
+    <Property Name="screening_start" Type="DateTime" Precision="0" />
+    <Property Name="screening_end" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tblGenre" Relationship="Self.fk_ref_genre_id" FromRole="tblScreening" ToRole="tblGenre" />
+    <NavigationProperty Name="tblSchedules" Relationship="Self.fk_ref_screening_name" FromRole="tblScreening" ToRole="tblSchedule" />
+    <NavigationProperty Name="tblStudio" Relationship="Self.fk_ref_studio_id" FromRole="tblScreening" ToRole="tblStudio" />
+  </EntityType>
+  <EntityType Name="tblStudio">
+    <Key>
+      <PropertyRef Name="studio_id" />
+    </Key>
+    <Property Name="studio_id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studio_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblScreenings" Relationship="Self.fk_ref_studio_id" FromRole="tblStudio" ToRole="tblScreening" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSchedule">
+    <Key>
+      <PropertyRef Name="auditorium_id" />
+      <PropertyRef Name="screening_name" />
+    </Key>
+    <Property Name="auditorium_id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="screening_name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="time" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblAuditorium" Relationship="Self.fk_ref_auditorium_id" FromRole="tblSchedule" ToRole="tblAuditorium" />
+    <NavigationProperty Name="tblScreening" Relationship="Self.fk_ref_screening_name" FromRole="tblSchedule" ToRole="tblScreening" />
+  </EntityType>
+  <Association Name="fk_ref_auditorium_id">
+    <End Role="tblAuditorium" Type="Self.tblAuditorium" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblSchedule" Type="Self.tblSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAuditorium">
+        <PropertyRef Name="auditorium_id" />
+      </Principal>
+      <Dependent Role="tblSchedule">
+        <PropertyRef Name="auditorium_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ref_center_id">
+    <End Role="tblCenter" Type="Self.tblCenter" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblAuditorium" Type="Self.tblAuditorium" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCenter">
+        <PropertyRef Name="center_id" />
+      </Principal>
+      <Dependent Role="tblAuditorium">
+        <PropertyRef Name="center_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ref_genre_id">
+    <End Role="tblGenre" Type="Self.tblGenre" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblScreening" Type="Self.tblScreening" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGenre">
+        <PropertyRef Name="genre_id" />
+      </Principal>
+      <Dependent Role="tblScreening">
+        <PropertyRef Name="genre_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ref_screening_name">
+    <End Role="tblScreening" Type="Self.tblScreening" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblSchedule" Type="Self.tblSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblScreening">
+        <PropertyRef Name="screening_name" />
+      </Principal>
+      <Dependent Role="tblSchedule">
+        <PropertyRef Name="screening_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ref_studio_id">
+    <End Role="tblStudio" Type="Self.tblStudio" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblScreening" Type="Self.tblScreening" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStudio">
+        <PropertyRef Name="studio_id" />
+      </Principal>
+      <Dependent Role="tblScreening">
+        <PropertyRef Name="studio_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLRapPhimEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblAuditoriums" EntityType="Self.tblAuditorium" />
+    <EntitySet Name="tblCenters" EntityType="Self.tblCenter" />
+    <EntitySet Name="tblGenres" EntityType="Self.tblGenre" />
+    <EntitySet Name="tblScreenings" EntityType="Self.tblScreening" />
+    <EntitySet Name="tblStudios" EntityType="Self.tblStudio" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <EntitySet Name="tblSchedules" EntityType="Self.tblSchedule" />
+    <AssociationSet Name="fk_ref_auditorium_id" Association="Self.fk_ref_auditorium_id">
+      <End Role="tblAuditorium" EntitySet="tblAuditoriums" />
+      <End Role="tblSchedule" EntitySet="tblSchedules" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ref_center_id" Association="Self.fk_ref_center_id">
+      <End Role="tblCenter" EntitySet="tblCenters" />
+      <End Role="tblAuditorium" EntitySet="tblAuditoriums" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ref_genre_id" Association="Self.fk_ref_genre_id">
+      <End Role="tblGenre" EntitySet="tblGenres" />
+      <End Role="tblScreening" EntitySet="tblScreenings" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ref_screening_name" Association="Self.fk_ref_screening_name">
+      <End Role="tblScreening" EntitySet="tblScreenings" />
+      <End Role="tblSchedule" EntitySet="tblSchedules" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ref_studio_id" Association="Self.fk_ref_studio_id">
+      <End Role="tblStudio" EntitySet="tblStudios" />
+      <End Role="tblScreening" EntitySet="tblScreenings" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
