@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8513905C-3351-441C-9157-7479206914AD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>cinema_mgmt</RootNamespace>
+    <AssemblyName>cinema-mgmt</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BS Layer\BLAuditorium.cs" />
+    <Compile Include="BS Layer\BLCenter.cs" />
+    <Compile Include="BS Layer\BLScreening.cs" />
+    <Compile Include="BS Layer\BLUser.cs" />
+    <Compile Include="CinemaDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CinemaDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DB Layer\DBMain.cs" />
+    <Compile Include="Form Admins\frmAdmins.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form Admins\frmAdmins.Designer.cs">
+      <DependentUpon>frmAdmins.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form Auditoriums\frmAddAuditorium.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form Auditoriums\frmAddAuditorium.Designer.cs">
+      <DependentUpon>frmAddAuditorium.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form Centers\frmAddCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form Centers\frmAddCenter.Designer.cs">
+      <DependentUpon>frmAddCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form Auditoriums\frmAuditoriums.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form Auditoriums\frmAuditoriums.Designer.cs">
+      <DependentUpon>frmAuditoriums.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form Centers\frmCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form Centers\frmCenter.Designer.cs">
+      <DependentUpon>frmCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form Admins\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form Admins\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form Centers\frmUpdateCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form Centers\frmUpdateCenter.Designer.cs">
+      <DependentUpon>frmUpdateCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form Screenings\frmAddScreening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form Screenings\frmAddScreening.Designer.cs">
+      <DependentUpon>frmAddScreening.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form Screenings\frmScreening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form Screenings\frmScreening.Designer.cs">
+      <DependentUpon>frmScreening.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form Admins\frmSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form Admins\frmSignUp.Designer.cs">
+      <DependentUpon>frmSignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmScreeningPremiere.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmScreeningPremiere.Designer.cs">
+      <DependentUpon>frmScreeningPremiere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Utility.cs" />
+    <EmbeddedResource Include="Form Admins\frmAdmins.resx">
+      <DependentUpon>frmAdmins.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form Admins\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form Admins\frmSignUp.resx">
+      <DependentUpon>frmSignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form Auditoriums\frmAddAuditorium.resx">
+      <DependentUpon>frmAddAuditorium.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form Centers\frmAddCenter.resx">
+      <DependentUpon>frmAddCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form Auditoriums\frmAuditoriums.resx">
+      <DependentUpon>frmAuditoriums.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form Centers\frmCenter.resx">
+      <DependentUpon>frmCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form Centers\frmUpdateCenter.resx">
+      <DependentUpon>frmUpdateCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form Screenings\frmAddScreening.resx">
+      <DependentUpon>frmAddScreening.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form Screenings\frmScreening.resx">
+      <DependentUpon>frmScreening.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmScreeningPremiere.resx">
+      <DependentUpon>frmScreeningPremiere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptScreeningPremiere.rdlc" />
+    <None Include="CinemaDBDataSet.xsc">
+      <DependentUpon>CinemaDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CinemaDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CinemaDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CinemaDBDataSet.xss">
+      <DependentUpon>CinemaDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\delete.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
